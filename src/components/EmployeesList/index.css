@@ -1,0 +1,45 @@
+.list-element {
+  padding: 0;
+  margin: 0;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.employee-table th {
+  background-color: #f2f2f2;
+}
+
+.employee-table img {
+  max-width: 100px;
+  height: auto;
+}
+
+.employee-table button {
+  padding: 6px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .employee-table th,
+  .employee-table td {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .employee-table img {
+    max-width: 80px;
+  }
+}
