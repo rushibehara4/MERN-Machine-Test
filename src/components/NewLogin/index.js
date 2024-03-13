@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {v4 as uuid} from 'uuid'
 import './index.css'
 
 class NewEmployeeDetails extends Component {
@@ -35,12 +36,13 @@ class NewEmployeeDetails extends Component {
 
     const currentDate = new Date()
     const day = String(currentDate.getDate()).padStart(2, '0')
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0') // Month is zero-based
-    const year = String(currentDate.getFullYear()).slice(-2) // Get last two digits of year
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0')
+    const year = String(currentDate.getFullYear()).slice(-2)
 
-    const createdDate = `${day}-${month}-${year}` // Format as dd-mm-yy
+    const createdDate = `${day}-${month}-${year}`
 
     const newUserLoginDetails = {
+      id: uuid(),
       name,
       email,
       mobileNo,
@@ -52,22 +54,12 @@ class NewEmployeeDetails extends Component {
     }
 
     const updatedEmployeeDetails = [...employeeData, newUserLoginDetails]
-    // console.log(updatedEmployeeDetails)
+    console.log(updatedEmployeeDetails)
     this.setState({employeeData: updatedEmployeeDetails}, () => {
       localStorage.setItem(
         'employeeData',
         JSON.stringify(updatedEmployeeDetails),
       )
-      this.setState({
-        id: '',
-        name: '',
-        email: '',
-        mobileNo: '',
-        designation: 'HR',
-        gender: 'male',
-        courses: [],
-        image: null,
-      })
     })
   }
 

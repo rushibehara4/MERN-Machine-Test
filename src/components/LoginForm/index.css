@@ -16,22 +16,6 @@
   }
 }
 
-.login-website-logo-mobile-image {
-  width: 165px;
-  margin-top: 50px;
-  margin-bottom: 35px;
-}
-
-@media screen and (min-width: 992px) {
-  .login-website-logo-mobile-image {
-    display: none;
-  }
-}
-
-.login-image {
-  width: 278px;
-}
-
 @media screen and (min-width: 992px) {
   .login-image {
     width: 60%;
@@ -42,7 +26,7 @@
 }
 
 .login-website-logo-desktop-image {
-  width: 185px;
+  width: 385px;
 }
 
 @media screen and (max-width: 991px) {
@@ -108,7 +92,6 @@
   padding: 8px 16px 8px 16px;
 }
 
-
 .login-button {
   font-family: 'Roboto';
   font-weight: bold;
@@ -132,21 +115,4 @@
   font-size: 12px;
   line-height: 16px;
   color: #ff0b37;
-}
-
-.example_d {
-color: #20bf6b !important;
-text-transform: uppercase;
-background: #ffffff;
-padding: 20px;
-border: 4px solid #20bf6b !important;
-border-radius: 6px;
-display: inline-block;
-transition: all 0.3s ease 0s;
-}
-.example_d:hover {
-color: #494949 !important;
-border-radius: 50px;
-border-color: #494949 !important;
-transition: all 0.3s ease 0s;
 }

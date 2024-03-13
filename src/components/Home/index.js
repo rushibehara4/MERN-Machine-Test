@@ -12,12 +12,10 @@ const Home = () => {
     <div>
       <Header />
       <div className="home-container">
-        <h1 className="home-heading">Welcome to Admin</h1>
-        <p className="home-description">
-          <Link to="/newEmployeeLogin" className="example_e">
-            Create a New User Login
-          </Link>
-        </p>
+        <h1>Welcome to Admin</h1>
+        <Link to="/newLogin">
+          <p>Create a New Login User</p>
+        </Link>
       </div>
     </div>
   )

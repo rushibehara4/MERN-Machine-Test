@@ -33,7 +33,7 @@ class LoginForm extends Component {
     const response = await fetch(url, option)
     const data = await response.json()
     if (response.ok === true) {
-      this.onSubmitSuccess(data.jwtToken)
+      this.onSubmitSuccess()
     } else {
       this.onSubmitFailure(data.error_msg)
     }
@@ -95,11 +95,11 @@ class LoginForm extends Component {
           <h1>Employee Login</h1>
           <div className="input-container">{this.renderUsernameField()}</div>
           <div className="input-container">{this.renderPasswordField()}</div>
-          {showErrorMsg && <p className="error-message">{errorMsg}</p>}
           <button type="submit" className="login-button">
             Login
           </button>
         </form>
+        {showErrorMsg && <p>*{errorMsg}</p>}
       </div>
     )
   }

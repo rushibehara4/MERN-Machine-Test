@@ -1,19 +1,16 @@
 import {Component} from 'react'
-import {Redirect} from 'react-router-dom'
 import Header from '../Header'
 import './index.css'
 
 class EmployeesList extends Component {
   state = {
-    employeeData: JSON.parse(localStorage.getItem('employeeData')) || [],
-    redirectToEdit: false,
-    editId: null,
+    employeeData: [],
   }
 
-  onEditId = id => {
-    const {history} = this.props
-    this.setState({redirectToEdit: true, editId: id})
-    history.push('/employeeList')
+  componentDidMount() {
+    const storedLoginData = localStorage.getItem('employeeData')
+    const parsedData = storedLoginData ? JSON.parse(storedLoginData) : []
+    this.setState({employeeData: parsedData})
   }
 
   onDeleteId = id => {
@@ -26,12 +23,7 @@ class EmployeesList extends Component {
   }
 
   render() {
-    const {employeeData, redirectToEdit, editId} = this.state
-
-    if (redirectToEdit) {
-      return <Redirect to={`/editLogin/${editId}`} />
-    }
-
+    const {employeeData} = this.state
     return (
       <div>
         <Header />
@@ -53,31 +45,26 @@ class EmployeesList extends Component {
                 </tr>
               </thead>
               <tbody>
-                {employeeData.map(employee => (
-                  <tr key={employee.id} className="employee-item">
-                    <td>{employee.id}</td>
+                {employeeData.map(details => (
+                  <tr key={details.id} className="employee-item">
+                    <td>{details.id}</td>
                     <td>
-                      <img src={employee.image} alt="Employee" />
+                      <img src={details.image} alt="Employee" />
                     </td>
-                    <td>{employee.name}</td>
+                    <td>{details.name}</td>
                     <td>
-                      <a href={`mailto:${employee.email}`}>{employee.email}</a>
+                      <a href={`mailto:${details.email}`}>{details.email}</a>
                     </td>
-                    <td>{employee.mobileNo}</td>
-                    <td>{employee.designation}</td>
-                    <td>{employee.gender}</td>
-                    <td>{employee.courses.join(', ')}</td>
-                    <td>{employee.createdDate}</td>
+                    <td>{details.mobileNo}</td>
+                    <td>{details.designation}</td>
+                    <td>{details.gender}</td>
+                    <td>{details.courses.join(', ')}</td>
+                    <td>{details.createdDate}</td>
                     <td>
+                      <button type="button">Edit</button>
                       <button
                         type="button"
-                        onClick={() => this.onEditId(employee.id)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => this.onDeleteId(employee.id)}
+                        onClick={() => this.onDeleteId(details.id)}
                       >
                         Delete
                       </button>
